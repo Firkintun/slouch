@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Schoonology/slouch",
   "dependencies": {
-    "rc": "~0.3.3"
+    "rc": "~0.3.3",
+    "once-later": "~1.0.1",
+    "JSONStream": "~0.7.1"
   }
 }
