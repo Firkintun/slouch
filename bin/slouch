@@ -25,8 +25,8 @@ try {
         .on('copy', function (doc) {
           console.log('Updated %j.', doc._id)
         })
-        .on('delete', function (id) {
-          console.log('Removed %j.', id)
+        .on('delete', function (doc) {
+          console.log('Removed %j.', doc._id)
         })
     })
 } catch (err) {
