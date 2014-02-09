@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+var fs = require('fs')
+  , path = require('path')
+  , slouch = require('../lib')
+  , manifestFile = process.argv[2]
+  , started = false
+  , manifestPath
+
+if (!manifestFile || manifestFile === '--help' || manifestFile === 'help') {
+  logUsage()
+  process.exit(1)
+}
+
+manifestPath = path.resolve(process.cwd(), manifestFile)
+
+if (!fs.existsSync(manifestPath)) {
+  logError(new Error('Manifest file "' + manifestFile + '" does not exist.'))
+}
+
+try {
+  JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
+    .channels.forEach(function (options) {
+      slouch.createChannel(options)
+        .on('error', logError)
+    })
+} catch (err) {
+  logError(new Error('Invalid manifest file at ' + manifestFile + '.'))
+}
+
+function logError(err) {
+  console.error('Error:', err.message || err)
+  if (!started) {
+    process.exit(2)
+  }
+}
+
+function logUsage() {
+  console.log('Usage: slouch MANIFEST_FILE')
+  console.log('')
+  console.log('For more information, see https://github.com/Firkintun/slouch.')
+}

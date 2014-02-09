@@ -1,5 +1,5 @@
 if (require.main === module) {
-  require('./bin/replicator')
+  require('./bin/slouch')
 } else {
   module.exports = require('./lib')
 }
