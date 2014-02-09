@@ -22,6 +22,12 @@ try {
     .channels.forEach(function (options) {
       slouch.createChannel(options)
         .on('error', logError)
+        .on('copy', function (doc) {
+          console.log('Updated %j.', doc._id)
+        })
+        .on('delete', function (id) {
+          console.log('Removed %j.', id)
+        })
     })
 } catch (err) {
   logError(new Error('Invalid manifest file at ' + manifestFile + '.'))
