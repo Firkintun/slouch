@@ -1,6 +1,6 @@
 {
   "name": "slouch",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A lazy, pull-only, continuous replication server from CouchDB to MongoDB.",
   "main": "index.js",
   "scripts": {
