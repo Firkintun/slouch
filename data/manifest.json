@@ -1,0 +1,6 @@
+{
+  "channels": [{
+    "source": "http://couchdb/collection",
+    "target": "mongodb://mongodb/database/collection"
+  }]
+}
